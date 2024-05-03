@@ -55,3 +55,39 @@ config.php中定义了$flag,因此可以直接echo $flag
 
 # web 16
 md5解密
+
+# web 17
+include（），日志文件注入
+
+curl -i 服务器网址
+
+得到服务器类型为nginx
+
+```
+//nginx日志文件地址
+/var/log/nginx/access.log
+//apache日志文件地址
+/var/log/apache/access.log
+```
+
+查看日志文件发现其中存入了每次请求的user-agent信息
+
+用brup修改请求，在user-agent中加入一句话木马，
+
+本题也可以直接
+```
+<?php system('ls');?>
+<?php system('cat 36d.php');?>
+```
+
+# web22
+看了wp还是不懂挖
+
+# 获得百分百的快乐
+$_GET[1],/?1=
+
+>ls,创建一个名为ls的文件
+
+*，以第一个文件的名字为命令执行
+
+nl，计算行号并输出文件内容
