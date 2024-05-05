@@ -9,4 +9,4 @@ eval($_REQUEST[$_GET[$_POST[$_COOKIE['CTFshow-QQ群:']]]][6][0][7][5][8][0][9][4
 */
 ```
 构造如下请求（不知道request c[][]...[]=system('ls /');命令放在get处无法执行。。。，改到post处就可以）
-![pic1](image-1.png)
+![pic1](/ctfshow/image/image-1.png)
