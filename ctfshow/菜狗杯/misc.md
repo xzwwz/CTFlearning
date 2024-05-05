@@ -140,7 +140,7 @@ BlindWaterMark-master
 ![pic](image.png)
 
 # 迅疾响应
-[二维码](https://merri.cx/qrazybox/)
+[qrazybox](https://merri.cx/qrazybox/)
 
 没怎么懂，找时间了解一下二维码原理
 
