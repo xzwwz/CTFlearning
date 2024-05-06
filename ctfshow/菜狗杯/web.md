@@ -52,3 +52,22 @@ php的序列化和反序列化，<mark>由于有shell_exec就不用system了</ma
 ```php
 $cmd=O:8:"Webshell":1:{s:3:"cmd";s:4:"nl *";}
 ```
+# 化整为零
+构造payload ?1=%E5&2=%A4&3=%A7&4=%E7&5=%89&6=%9B
+
+# 无一幸免
+题出错了?，退测if中应该为==
+
+# 传说之下（雾）
+在控制台修改
+
+# 算力超群
+看了wp要用反弹shell，没有公网ip
+
+# 算力升级
+没做还
+
+# easyPytHon_P
+给了源码还是得看wp，cmd=awk&param=system("ls")
+
+<mark>有的地方不用双引号不行不知道为什么</mark>
